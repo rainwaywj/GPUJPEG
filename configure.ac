@@ -43,11 +43,11 @@ else
 fi
 
 # huffmann
-AC_ARG_ENABLE(huffman-gpu-quick-tables, AC_HELP_STRING([--disable-huffman-gpu-quick-tables], [disable huffman GPU decoder quick tables in constant memory] ) )
-if test x$enable_huffman_gpu_quick_tables = xno ; then
-	AC_DEFINE([NO_HUFFMAN_GPU_QUICK_TABLES], [1], [Build with huffmann coder tables in constant memory])
+AC_ARG_ENABLE(huffman-gpu-quick-tables, AC_HELP_STRING([--enable-huffman-gpu-quick-tables], [enable Huffman GPU decoder quick tables in constant memory] ) )
+if test x$enable_huffman_gpu_quick_tables = xyes ; then
+	AC_DEFINE([HUFFMAN_GPU_QUICK_TABLES], [1], [Build with huffmann coder tables in constant memory])
 else
-        enable_huffman_gpu_quick_tables=yes
+        enable_huffman_gpu_quick_tables=no
 fi
 
 # opengl
