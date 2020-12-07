@@ -43,13 +43,11 @@ else
 fi
 
 # huffmann
-AC_ARG_ENABLE(constant-tables, AC_HELP_STRING([--disable-constant-tables], [disable huffman coder tables in constant memory] ) )
-if test x$enable_constant_tables = x ; then
-	enable_constant_tables=yes
-fi
-
-if test x$enable_constant_tables = xyes ; then
-	AC_DEFINE([GPUJPEG_HUFFMAN_CODER_TABLES_IN_CONSTANT], [1], [Build with huffmann coder tables in constant memory])
+AC_ARG_ENABLE(huffman-gpu-quick-tables, AC_HELP_STRING([--disable-huffman-gpu-quick-tables], [disable huffman GPU decoder quick tables in constant memory] ) )
+if test x$enable_huffman_gpu_quick_tables = xno ; then
+	AC_DEFINE([NO_HUFFMAN_GPU_QUICK_TABLES], [1], [Build with huffmann coder tables in constant memory])
+else
+        enable_huffman_gpu_quick_tables=yes
 fi
 
 # opengl
@@ -178,7 +176,7 @@ Configuration summary:
   Prefix ...................... $prefix
   Debug ....................... $debug
 
-  Constant tables.............. $enable_constant_tables
+  Huffman quick tables ........ $enable_huffman_gpu_quick_tables
   OpenGL ...................... $enable_opengl
   Host compiler ............... $with_cuda_host_compiler
   Cuda compiler ............... $CUDA_COMPILER
