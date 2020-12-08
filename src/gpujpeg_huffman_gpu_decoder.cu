@@ -61,7 +61,7 @@ struct gpujpeg_huffman_gpu_decoder {
     uint16_t *d_gpujpeg_huffman_gpu_decoder_tables_full;
 };
 
-#ifndef HUFFMAN_GPU_QUICK_TABLES
+#ifdef HUFFMAN_GPU_QUICK_TABLES
 /** Number of code bits to be checked first (with high chance for the code to fit into this number of bits). */
 #define QUICK_CHECK_BITS 10
 #define QUICK_TABLE_ITEMS (4 * (1 << QUICK_CHECK_BITS))
